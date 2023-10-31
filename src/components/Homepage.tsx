@@ -14,7 +14,7 @@ const Homepage = () => {
       onSnapshot(collection(db, "Rooms"), (snapshot) =>
         setRoomList(
           snapshot.docs.map((doc) => ({
-            ...doc.data(),
+            ...(doc.data() as Rooms),
             id: doc.id,
           }))
         )
@@ -24,7 +24,7 @@ const Homepage = () => {
       onSnapshot(collection(db, "Users"), (snapshot) => {
         setUsersList(
           snapshot.docs.map((doc) => ({
-            ...doc.data(),
+            ...(doc.data() as Users),
             id: doc.id,
           }))
         );
